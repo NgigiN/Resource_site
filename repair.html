@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="repair.css">
+	<title>DITA Repair</title>
+</head>
+
+<body>
+	<div class="form">
+		<header>Computer and Laptop Repair Registration</header>
+		<i>
+			<p>The details collected help keep your device safe during repair</p>
+		</i>
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" placeholder="'John Doe'" required>
+			<br>
+			<label for="adm">Adm No:</label>
+			<input type="text" id="adm" name="adm" placeholder="##-####" required>
+			<br>
+			<label for="phone">Phone No:</label>
+			<input type="tel" id="phone" name="phone" placeholder="+254 7..." required>
+			<br>
+			<label for="device">Device:</label>
+			<input type="text" id="device" name="device" placeholder="Lenovo" required>
+			<label for="serial_No">Serial Number:</label>
+			<input type="text" id="serial_No" name="serial_No" required>
+			<br>
+			<label for="issue" class="issue-lbl">Issue:</label>
+			<select type="issue" id="issue" name="issue" required>
+				<option value="hardware">Hardware</option>
+				<option value="software">Software</option>
+			</select>
+			<br>
+			<label for="description">Description:</label>
+			<textarea id="description" name="description"
+				placeholder="Please describe the type of issue you are facing: " required></textarea>
+			<br>
+
+			<input type="submit" value="Submit" id="submitButton" class="btn">
+
+		</form>
+		<i>
+			<h6 style="position:relative; text-align: center;">Once your repair is done we will get intouch
+				with you via
+				Whatsapp.</h6>
+		</i>
+		<section class="footer" id="footer-section">
+			<p style="text-align: center;">Resource Lab</p>
+		</section>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
