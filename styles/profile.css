@@ -1,0 +1,62 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 1.0;
+	color: #333;
+	padding: 0;
+	overflow-x: hidden;
+	min-height: 100vh;
+}
+
+header {
+	background-color: #333;
+	padding: 10px;
+	margin: 0;
+}
+
+.logo-link {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+}
+
+.logo {
+	width: 20%;
+	height: auto;
+	margin-bottom: 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ffffff;
+	margin: 0;
+	top: 0;
+}
+
+.profile-container {
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 20px;
+	padding: 40px;
+	position: relative;
+	z-index: 1;
+	margin-bottom: 30px;
+}
+
+.history-container {
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 20px;
+	padding: 40px;
+	position: relative;
+	z-index: 1;
+}
+
+@media (max-width: 768px) {
+
+	.profile-container,
+	.history-container {
+		padding: 20px;
+	}
+}

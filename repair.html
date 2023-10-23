@@ -4,55 +4,90 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="repair.css">
+	<link rel="stylesheet" href="/styles/repair.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
 	<title>DITA Repair</title>
 </head>
 
 <body>
-	<div class="form">
-		<header>Computer and Laptop Repair Registration</header>
-		<i>
-			<p>The details collected help keep your device safe during repair</p>
-		</i>
-		<form>
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" placeholder="'John Doe'" required>
-			<br>
-			<label for="adm">Adm No:</label>
-			<input type="text" id="adm" name="adm" placeholder="##-####" required>
-			<br>
-			<label for="phone">Phone No:</label>
-			<input type="tel" id="phone" name="phone" placeholder="+254 7..." required>
-			<br>
-			<label for="device">Device:</label>
-			<input type="text" id="device" name="device" placeholder="Lenovo" required>
-			<label for="serial_No">Serial Number:</label>
-			<input type="text" id="serial_No" name="serial_No" required>
-			<br>
-			<label for="issue" class="issue-lbl">Issue:</label>
-			<select type="issue" id="issue" name="issue" required>
-				<option value="hardware">Hardware</option>
-				<option value="software">Software</option>
-			</select>
-			<br>
-			<label for="description">Description:</label>
-			<textarea id="description" name="description"
-				placeholder="Please describe the type of issue you are facing: " required></textarea>
-			<br>
+	<header>
+		<a href="index.html" class="logo-link">
+			<img src="/assets/ditaLogo-3d409f18.png" alt="" class="logo">
+		</a>
+		<h1>Repair Booking</h1>
+	</header>
+	<main>
+		<div class="container mt-5">
 
-			<input type="submit" value="Submit" id="submitButton" class="btn">
+			<div class="form-container">
+				<form class="p-4 border rounded">
 
-		</form>
-		<i>
-			<h6 style="position:relative; text-align: center;">Once your repair is done we will get intouch
-				with you via
-				Whatsapp.</h6>
-		</i>
-		<section class="footer" id="footer-section">
-			<p style="text-align: center;">Resource Lab</p>
-		</section>
-	</div>
+
+					<div class="mb-3">
+						<label for="device" class="form-label">Device:</label>
+						<input type="text" class="form-control" id="device" name="device"
+							placeholder="Lenovo" required style="margin-left: 20%;">
+					</div>
+
+
+					<div class="mb-3">
+						<label for="serial_No" class="form-label">Serial
+							Number:</label>
+						<input type="text" class="form-control" id="serial_No" name="serial_No"
+							required style="margin-left: 5%;">
+					</div>
+
+
+
+					<div class="mb-3">
+						<label for="issue" class="form-label">Issue:</label>
+						<select class="form-select" id="issue" name="issue" required
+							style="margin-left: 22%" ;>
+							<option value=" hardware">
+								Hardware</option>
+							<option value="software">
+								Software</option>
+						</select>
+					</div>
+
+
+					<div class="mb-3">
+						<label for="description" class="form-label">Description:</label>
+						<textarea class="form-control" id="description" name="description"
+							placeholder="Please describe the type of issue you are facing:"
+							required></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-block">Submit</button>
+					<i>
+						<p class="mt-4 text-center"
+							style="padding-top: 10px; margin-bottom: 0;">Once
+							your repair is done,
+							we will get in touch with
+							you via
+							WhatsApp.</p>
+					</i>
+			</div>
+
+			</form>
+
+		</div>
+
+	</main>
+	<section class="footer container-fluid" id="footer-section">
+		<p>Resource Lab</p>
+	</section>
 	<script src="script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+		integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+		crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
