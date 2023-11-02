@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<section class="col-md-6">
+        <div>
+                <h1>Welcome, {{ current_user.username }}</h1>
+                <p>Dita Resource lab is a place where all tech enthusiasts come to share
+                        ideas
+                        and collaborate. DITA strives to be a place where all those who
+                        love tech can
+                        have a place where their love is nurtured.</p>
+        </div>
+
+        <div>
+                <figure>
+                        <!-- <img class="welcome_img img-fluid" src="../static/entrance_2.jpg"
+                                alt="Tech people doing what they do best"> -->
+                        <figcaption class="welcome-caption">Tech enthusiasts at it</figcaption>
+                </figure>
+        </div>
+</section>
+
+
+<section id="hardware-section" class="hardware-container container">
+
+        <div>
+                <!-- <img src="/pic_5.jpg" class="hardware_bg_image"> -->
+                <h2 class="text-center">Hardware</h2>
+                <br>
+                <br>
+                <p>DITA is a one place stop solution for your hardware issues. Learn new things as you
+                        hang
+                        around other curious minds
+                </p>
+                <br>
+                <i>
+                        <p style="text-align: center;">
+                                <a href="{{ url_for('repairs') }}" class="btn btn-primary">Book a repair</a>
+                        </p>
+                </i>
+        </div>
+</section>
+<section id="software-section" class="container">
+        <h2 class="text-center"> Software </h2>
+        <p> We also provide software solutions such as: </p>
+        <ul>
+                <li>Windows Updates</li>
+                <li>Windows recovery</li>
+                <li>Dual booting</li>
+                <li>Office suite</li>
+
+        </ul>
+        <i>
+                <p style="text-align: center;">
+                        <a href="{{ url_for('repairs') }}" class="btn btn-primary">Book a repair</a>
+                </p>
+        </i>
+</section>
+<section id="tutoring-section" class="tutoring-container container">
+        <h2 class="text-center">Tutoring</h2>
+        <p>Dita strives to be a community where no one has to walk alone. We believe a problem shared is
+                half solved.
+                There for in DITA we also have peer to peer tutoring where we can help each other in
+                our areas of
+                strength as we also seek for help.
+        </p>
+        <p>We major on:
+        <ul>
+                <li>Mathematics</li>
+                <li>Physics</li>
+                <li>Programming</li>
+        </ul>
+        </p>
+        <i>
+                <p style="text-align: center;">
+                        <a href="{{ url_for('sessions') }}" class="btn btn-primary">Book a session with a peer</a>
+                </p>
+        </i>
+</section>
+<section class="footer container-fluid" id="footer-section">
+        <p>Resource Lab</p>
+</section>
+{% endblock %}

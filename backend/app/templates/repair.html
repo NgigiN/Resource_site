@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<h1 class="text-center">Repair Registration</h1>
+			<form action="" method="post" novalidate>
+				{{ form.hidden_tag() }}
+
+				<div class="form-group">
+					{{ form.device_brand.label }}
+					{{ form.device_brand(class="form-control") }}
+					{% for error in form.device_brand.errors %}
+					<div class="text-danger">{{ error }}</div>
+					{% endfor %}
+				</div>
+
+				<div class="form-group">
+					{{ form.serial_no.label }}
+					{{ form.serial_no(class="form-control") }}
+					{% for error in form.serial_no.errors %}
+					<div class="text-danger">{{ error }}</div>
+					{% endfor %}
+				</div>
+
+				<div class="form-group">
+					{{ form.issue_type.label }}
+					<div>
+						<label class="radio-inline">
+							{{ form.issue_type(value="hardware") }}
+
+						</label>
+						<label class="radio-inline">
+							{{ form.issue_type(value="software") }}
+
+						</label>
+					</div>
+					{% for error in form.issue_type.errors %}
+					<div class="text-danger">{{ error }}</div>
+					{% endfor %}
+				</div>
+
+
+				<div class="form-group">
+					{{ form.description.label }}
+					{{ form.description(class="form-control") }}
+					{% for error in form.description.errors %}
+					<div class="text-danger">{{ error }}</div>
+					{% endfor %}
+				</div>
+
+				<div class="form-group text-center">
+					{{ form.submit(class="btn btn-primary") }}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
