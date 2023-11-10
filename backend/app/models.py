@@ -1,18 +1,51 @@
 """This module is intended to define my database structure"""
 from datetime import datetime
+import email
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
 from hashlib import md5
 
+
 class Admin(db.Model):
     """This class(model) is for the admin table and it's constraints"""
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(128), index=True)
-    password = db.Column(db.String(128))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    email = db.Column(db.String(120), index=True, unique=True)
+    # password = db.Column(db.String(128))
+    password_hash = db.Column(db.String(128))
+
+    def set_password(self, password):
+        """ This function hashes the user password for security """
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        """ This function confirms that the hashed content once unhashed
+        is similar with the password entered"""
+        return check_password_hash(self.password_hash, password)
+
+    def avatar(self, size):
+        """ This function handles admin's avatar """
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
+
+    def is_active(self):
+        return True
+
+    def is_authenticated(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+    def __repr__(self):
+        return '<Admin {}>'.format(self.username)
 
 
 class User(UserMixin, db.Model):
@@ -29,6 +62,9 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
+    def get_id(self):
+        return str(self.id)
+
     def set_password(self, password):
         """ This function hashes the user password for security """
         self.password_hash = generate_password_hash(password)
@@ -44,14 +80,16 @@ class User(UserMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
 
+    def last_seen_str(self):
+        if self.last_seen is not None:
+            return self.last_seen.strftime('%a %dth, %B %Y %I:%M%p')
+
+        return 'Last seen a long time ago'
+
     def __repr__(self):
         """ This function represents a user as a string on CMD """
         return '<User {}, {}>'.format(self.username, self.email)
 
-@login.user_loader
-def load_user(id):
-    """ This function loads a user from the db to flask-login """
-    return User.query.get(int(id))
 
 class Repair(db.Model):
     """This is a class(model) defining how my repair table will be"""

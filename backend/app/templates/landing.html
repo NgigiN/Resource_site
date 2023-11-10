@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+{% block head%}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/landing.css') }}">
+{%endblock%}
 {% block app_content %}
-<section class="col-md-6">
+
+<section id="welcome-section" class="welcome-container container">
         <div>
                 <h1>Welcome, {{ current_user.username }}</h1>
                 <p>Dita Resource lab is a place where all tech enthusiasts come to share
@@ -14,9 +19,9 @@
 
         <div>
                 <figure>
-                        <!-- <img class="welcome_img img-fluid" src="../static/entrance_2.jpg"
-                                alt="Tech people doing what they do best"> -->
-                        <figcaption class="welcome-caption">Tech enthusiasts at it</figcaption>
+                        <img class="welcome_img img-fluid" src="../static/entrance_2.jpg"
+                                alt="Tech people doing what they do best">
+                        <figcaption class="welcome-caption text-center"><i>Tech enthusiasts at it</i></figcaption>
                 </figure>
         </div>
 </section>
@@ -27,7 +32,6 @@
         <div>
                 <!-- <img src="/pic_5.jpg" class="hardware_bg_image"> -->
                 <h2 class="text-center">Hardware</h2>
-                <br>
                 <br>
                 <p>DITA is a one place stop solution for your hardware issues. Learn new things as you
                         hang
@@ -79,6 +83,6 @@
         </i>
 </section>
 <section class="footer container-fluid" id="footer-section">
-        <p>Resource Lab</p>
+        <p class="text-center">Resource Lab</p>
 </section>
 {% endblock %}

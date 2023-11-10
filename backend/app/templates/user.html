@@ -1,18 +1,38 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+<div class="container">
 	<table class="table table-hover">
 		<tr>
 			<td width="256px"><img src="{{ current_user.avatar(128) }}"></td>
-			<td><h1> User: {{ current_user.username }}</h1></td>
-			{% if current_user.last_seen %}<p>Last seen on: {{ current_user.last_seen }} </p>{% endif %}
+			<td>
+				<h1> User: {{ current_user.username }}</h1>
+				{% if current_user.last_seen %}<p>Last seen on: {{ current_user.last_seen_str() }} </p>
+				{% endif
+				%}
+				<p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+			</td>
 		</tr>
-		{% if user == current_user %}
-                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
-                {% endif %}
 	</table>
 	<hr>
-	<!-- {% for repair in repairs %}
-		{% include '_rep.html' %}
-		{% endfor %} -->
+	<h2>Repairs History</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Device Brand</th>
+				<th>Serial Number</th>
+				<th>Issue Type</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		{% for repair in repairs %}
+		<tr>
+			<td> {{ repair.device_brand }}</td>
+			<td> {{ repair.serial_no }}</td>
+			<td> {{ repair.issue_type }}</td>
+			<td> {{ repair.description }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
 {% endblock %}

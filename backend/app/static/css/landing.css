@@ -1,0 +1,12 @@
+.welcome_img {
+	display: block;
+	margin: 0 auto;
+	max-height: 500px;
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+
+/* #welcome-section {
+	background-image: url(/assets/entrance_2.jpg);
+} */
