@@ -10,13 +10,11 @@ import logging
 from logging.handlers import SMTPHandler
 
 from flask_login import LoginManager
-"""sqlalchemy = ORM"""
-"""flask_migrate is a flask wrapper for alembic a db migration framework
-	for SQLALchemy"""
-
+# Initialize the Flask application
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
+app.debug = True
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'

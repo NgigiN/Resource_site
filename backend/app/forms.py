@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from sqlalchemy import Boolean
-from wtforms import BooleanField, StringField, PasswordField, SubmitField, RadioField, TextAreaField
+from wtforms import BooleanField, StringField, PasswordField, SubmitField, RadioField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length, Regexp
 from app.models import User
 
@@ -52,6 +52,8 @@ class RepairsForm(FlaskForm):
                             validators=[DataRequired()])
     description = TextAreaField('Description', validators=[
                                 DataRequired(), Length(min=1, max=300, message='Description must be between 1 and 300 characters')])
+    status = SelectField('Status', choices=[('reported', 'Reported/Received'), ('in_progress', 'In Progress'), ('completed', 'Completed')],
+                         validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 

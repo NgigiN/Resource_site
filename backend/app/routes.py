@@ -72,7 +72,8 @@ def admin_dashboard():
     repairs = db.session.query(Repair, User).join(User).all()
     admins = Admin.query.all()
 
-    return render_template('admin_dashboard.html', title='Admin Sign In', repairs=repairs, users=users, admins=admins)
+    form = RepairsForm()
+    return render_template('admin_dashboard.html', title='Admin Sign In', repairs=repairs, users=users, admins=admins, form=form)
 
 
 @app.route('/logout')
@@ -120,6 +121,7 @@ def user(username):
 def repairs():
     form = RepairsForm()
     if form.validate_on_submit():
+        print("about to take form data")
         repair = Repair(
             device_brand=form.device_brand.data,
             serial_no=form.serial_no.data,
@@ -127,11 +129,27 @@ def repairs():
             description=form.description.data,
             user_id=current_user.id
         )
+        print("taken form data")
         db.session.add(repair)
         db.session.commit()
         flash('Your repair has been successfully submitted')
         return redirect(url_for('home'))
     return render_template('repair.html', title='Repair Registration', form=form)
+
+
+@app.route('/update_repair_status/<int:repair_id>', methods=['POST'])
+@login_required
+def update_repair_status(repair_id):
+    repair = Repair.query.get_or_404(repair_id)
+
+    form = RepairsForm(request.form, obj=repair)
+    if form.validate_on_submit():
+        repair.status = form.status.data
+        db.session.commit()
+        flash('Repair status updated', 'success')
+    else:
+        flash('Invalid form submission', 'warning')
+    return redirect(url_for('admin_dashboard'))
 
 
 @app.route('/sessions', methods=['GET', 'POST'])
@@ -149,7 +167,7 @@ def sessions():
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
-def edit_profile():
+def profile_edit():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data

@@ -24,6 +24,13 @@
 			<td> {{ repair.issue_type }}</td>
 			<td> {{ repair.description }}</td>
 			<td> {{ user.admission_number }}</td>
+			<td>
+				<form method="post" action="{{ url_for('update_repair_status', repair_id=repair.id) }}">
+					{{ form.hidden_tag() }}
+					{{ form.status(class="form-control", value=repair.status) }}
+					<button type="submit" class="btn btn-primary">Update</button>
+				</form>
+			</td>
 		</tr>
 		{% endfor %}
 	</tbody>

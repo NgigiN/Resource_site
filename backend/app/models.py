@@ -100,6 +100,7 @@ class Repair(db.Model):
     description = db.Column(db.Text)
     user_id = db.Column(db.String(7), db.ForeignKey('user.id'))
     repair_date = db.Column(db.DateTime, default=datetime.utcnow)
+    status = db.Column(db.String(20), default='reported')
 
     def __repr__(self):
         return '<Repair for a {}, with a {} issue on date {}.>'.format(self.device_brand, self.issue_type, self.repair_date)
